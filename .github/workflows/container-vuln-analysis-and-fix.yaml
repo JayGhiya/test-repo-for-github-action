@@ -28,7 +28,7 @@ jobs:
           core.setOutput('config', config);
     - name: Conditional Docker Image Scan
       if: ${{ fromJson(steps.read_json.outputs.config).dockerImageScan }}"
-      working_directory: charts/
+      working_directory: 'charts'
       env:
         VALUES_FILE: ${{ fromJson(steps.read_json.outputs.config).upStreamChartName }}/values.yaml
       run: |
