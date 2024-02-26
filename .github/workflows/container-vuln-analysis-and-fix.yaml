@@ -27,8 +27,8 @@ jobs:
           const config = JSON.parse(fs.readFileSync('.github/github-action-config.json', 'utf8'));
           core.setOutput('config', config);
     - name: Conditional Docker Image Scan
-      if: ${{ fromJson(steps.read_json.outputs.config).dockerImageScan }}"
-      working_directory: 'charts'
+      working-directory: charts
+      if: ${{ fromJson(steps.read_json.outputs.config).dockerImageScan }}
       env:
         VALUES_FILE: ${{ fromJson(steps.read_json.outputs.config).upStreamChartName }}/values.yaml
       run: |
